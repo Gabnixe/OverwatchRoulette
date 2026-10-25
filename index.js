@@ -81,7 +81,27 @@ function CreateHeroList(){
     selectButton.textContent = "Select";
     selectButton.onclick = function() { ToggleHeroIsSelected(index); };
 
-    row.appendChild(selectButton);
+    row.appendChild(selectButtonCell);
+
+    // CompleteButton cell
+    const completeButtonCell = document.createElement('td');
+
+    const completeButton = document.createElement('button');
+    completeButtonCell.appendChild(completeButton);
+    completeButton.textContent = "Complete";
+    completeButton.onclick = function() { ToggleHeroIsCompleted(index); };
+
+    row.appendChild(completeButtonCell);
+
+    // BlockButton cell
+    const blockButtonCell = document.createElement('td');
+
+    const blockButton = document.createElement('button');
+    blockButtonCell.appendChild(blockButton);
+    blockButton.textContent = "Block";
+    blockButton.onclick = function() { ToggleHeroIsBlocked(index); };
+
+    row.appendChild(blockButtonCell);
   });
 
   // Append table to main content
@@ -94,11 +114,13 @@ function SelectRandomHero(){
 }
 
 function ToggleHeroIsBlocked(index){
-
+  heroes[index].isBlocked = !(heroes[index].isBlocked);
+  console.log(heroes[index]);
 }
 
 function ToggleHeroIsCompleted(index){
-
+  heroes[index].isCompleted = !(heroes[index].isCompleted);
+  console.log(heroes[index]);
 }
 
 function ToggleHeroIsSelected(index){

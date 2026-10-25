@@ -4,7 +4,7 @@
         "role": "Support",
         "image": "Ana_Hero.webp",
         "isBlocked": false,
-        "isComplete": false,
+        "isCompleted": false,
         "isSelected": false
     },
     {
@@ -12,7 +12,7 @@
         "role": "Damage",
         "image": "Anran_Hero.webp",
         "isBlocked": false,
-        "isComplete": false,
+        "isCompleted": false,
         "isSelected": false
     },
     {
@@ -20,7 +20,7 @@
         "role": "Damage",
         "image": "Ashe_Hero.webp",
         "isBlocked": false,
-        "isComplete": false,
+        "isCompleted": false,
         "isSelected": false
     },
     {
@@ -28,7 +28,7 @@
         "role": "Support",
         "image": "Baptiste_Hero.webp",
         "isBlocked": false,
-        "isComplete": false,
+        "isCompleted": false,
         "isSelected": false
     },
     {
@@ -36,7 +36,7 @@
         "role": "Tank",
         "image": "D.Mon_Hero.webp",
         "isBlocked": false,
-        "isComplete": false,
+        "isCompleted": false,
         "isSelected": false
     }
 ]
