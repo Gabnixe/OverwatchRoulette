@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
+
 function CreateHeroList(){
   // Create a table in the main section
   const main = document.querySelector('main');
@@ -108,25 +109,68 @@ function CreateHeroList(){
   main.appendChild(table);
 }
 
-function SelectRandomHero(){
-  currentHero = heroes[Math.floor(Math.random() * heroes.length)];
-  console.log(currentHero);
+
+function RenderCurrentHero(){
+  const main = document.querySelector('main');
+  
+  // Create or get hero info section at top of main
+  let heroInfo = document.getElementById('current-hero-info');
+  
+  if (!heroInfo) {
+    heroInfo = document.createElement('div');
+    heroInfo.id = 'current-hero-info';
+    main.insertBefore(heroInfo, main.firstChild);
+    
+    // Create the info container
+    heroInfo.innerHTML = `<div id="hero-display"></div>`;
+  }
+  
+  const displayDiv = document.getElementById('hero-display');
+  
+  if (!currentHero) {
+    displayDiv.innerHTML = '<p style="color: #666; text-align: center;">No hero selected yet</p>';
+    return;
+  }
+  
+  // Hero Display
+  displayDiv.innerHTML = `
+    <div style="display: flex; gap: 20px; align-items: center;">
+      <img src="/assets/heroes_images/${currentHero.image}" 
+           alt="${currentHero.name}" 
+           style="width: 100px; height: auto;" />
+      <div>
+        ${currentHero.name}
+      </div>
+    </div>
+  `;
 }
+
 
 function ToggleHeroIsBlocked(index){
   heroes[index].isBlocked = !(heroes[index].isBlocked);
   console.log(heroes[index]);
 }
 
+
 function ToggleHeroIsCompleted(index){
   heroes[index].isCompleted = !(heroes[index].isCompleted);
   console.log(heroes[index]);
 }
 
+
 function ToggleHeroIsSelected(index){
   currentHero = heroes[index];
   console.log(currentHero);
+  RenderCurrentHero();
 }
+
+
+function SelectRandomHero(){
+  currentHero = heroes[Math.floor(Math.random() * heroes.length)];
+  console.log(currentHero);
+  RenderCurrentHero();
+}
+
 
 function SaveJSON(){
   const heroData = JSON.stringify(heroes, null, 2);
@@ -141,6 +185,7 @@ function SaveJSON(){
 
   console.log("Json Saved");
 }
+
 
 function LoadJSON(){
   if (!confirm('You will lose the current data. Continue?')) return;
