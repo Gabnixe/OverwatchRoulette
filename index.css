@@ -3,11 +3,175 @@
   src: url(assets/big_noodle_titling.ttf); /* url of the font */
 }
 
+html, body {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
 *{
-    background-color: black;
-    color: white;
-    text-align: left;
-    align-items: center;
     font-family: Big_Noodle;
-    font-size: 64px;
+}
+
+/* Hero List Container */
+.hero-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #2d2d2d;
+}
+
+/* Individual Hero Item */
+.hero-item {
+  display: grid;
+  grid-template-columns: 100px auto auto auto auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+.hero-item:hover {
+  border-color: #6bb9ff;
+  box-shadow: 0 2px 8px rgba(107, 185, 255, 0.3);
+}
+
+/* Hero Image Cell */
+.hero-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-item img {
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Role Cell */
+.role-cell {
+  display: flex;
+  justify-content: center;
+}
+
+/* Name Cell */
+.name-cell {
+  font-weight: 600;
+  color: #e0e0e0;
+  text-align: left;
+}
+
+/* Button Cells */
+.button-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.button-cell button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Select Button */
+.button-cell.select-btn button {
+  background: #3498db;
+  color: white;
+}
+
+.button-cell.select-btn button:hover {
+  background: #2980b9;
+}
+
+.button-cell.select-btn button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Complete Button */
+.button-cell.complete-btn button {
+  background: #27ae60;
+  color: white;
+}
+
+.button-cell.complete-btn button:hover {
+  background: #219150;
+}
+
+.button-cell.complete-btn button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Block Button */
+.button-cell.block-btn button {
+  background: #e74c3c;
+  color: white;
+}
+
+.button-cell.block-btn button:hover {
+  background: #c0392b;
+}
+
+.button-cell.block-btn button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+
+.hero-item.blocked {
+  opacity: 0.5;
+  background: #4a2e2e;
+  border-color: #e74c3c;
+}
+
+.hero-item.completed {
+  background: #2e4a2e;
+  border-color: #27ae60;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero-list {
+    flex-direction: column;
+  }
+  
+  .hero-item {
+    grid-template-columns: 80px auto;
+    gap: 10px;
+  }
+  
+  .button-cell:not(:first-child) button {
+    display: none;
+  }
+}
+
+/* Hero Display Section */
+#current-hero-info {
+  background: #2d2d2d;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #444;
+}
+
+#hero-display {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Loading/Empty State */
+#hero-display p {
+  color: #aaa;
+  text-align: center;
 }

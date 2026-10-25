@@ -29,84 +29,84 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 function CreateHeroList(){
-  // Create a table in the main section
+  // Create a div container in the main section (replacing table)
   const main = document.querySelector('main');
-  const table = document.createElement('table');
-  table.innerHTML = `<tbody></tbody>`;
-
-  // Loop through heroes and create table entries
-  const tbody = table.querySelector('tbody');
+  const heroList = document.createElement('div');
+  heroList.className = 'hero-list';
+  
+  // Loop through heroes and create list entries
   heroes.forEach((hero, index) => {
-    const row = document.createElement('tr');
-
-    // Hero image cell
-    const heroImageCell = document.createElement('td');
-
+    const item = document.createElement('div');
+    item.className = `hero-item ${heroes[index].isBlocked ? 'blocked' : ''} ${heroes[index].isCompleted ? 'completed' : ''}`;
+    
+    // Hero info cell
+    const heroInfoCell = document.createElement('div');
+    heroInfoCell.className = 'hero-info';
+    
     const heroImg = document.createElement('img');
-    heroImageCell.appendChild(heroImg);
-
-    // Update image path to assets/heroes_images folder
+    heroInfoCell.appendChild(heroImg);
     heroImg.src = `/assets/heroes_images/${hero.image}`;
     heroImg.alt = hero.name;
     heroImg.style.maxWidth = '100px';
     heroImg.style.height = 'auto';
-
-    row.appendChild(heroImageCell);
+    heroInfoCell.appendChild(heroImg);
 
     // Role cell
-    const roleCell = document.createElement('td');
-
+    const roleCell = document.createElement('div');
+    roleCell.className = 'role-cell';
+    
     const roleImg = document.createElement('img');
     roleCell.appendChild(roleImg);
-
-    // Update image path to assets/roles_images folder
     roleImg.src = `/assets/roles_icons/` + ROLES_ICONS[hero.role];
     roleImg.alt = hero.role;
     roleImg.style.maxWidth = '24px';
     roleImg.style.height = 'auto';
-
-    row.appendChild(roleCell);
-
-    tbody.appendChild(row);
     
     // Name cell
-    const nameCell = document.createElement('td');
+    const nameCell = document.createElement('div');
+    nameCell.className = 'name-cell';
     nameCell.textContent = hero.name;
-    row.appendChild(nameCell);
-
+    
     // SelectButton cell
-    const selectButtonCell = document.createElement('td');
-
+    const selectButtonCell = document.createElement('div');
+    selectButtonCell.className = 'button-cell';
+    
     const selectButton = document.createElement('button');
-    selectButtonCell.appendChild(selectButton);
     selectButton.textContent = "Select";
     selectButton.onclick = function() { ToggleHeroIsSelected(index); };
-
-    row.appendChild(selectButtonCell);
+    selectButtonCell.appendChild(selectButton);
 
     // CompleteButton cell
-    const completeButtonCell = document.createElement('td');
-
+    const completeButtonCell = document.createElement('div');
+    completeButtonCell.className = 'button-cell';
+    
     const completeButton = document.createElement('button');
-    completeButtonCell.appendChild(completeButton);
     completeButton.textContent = "Complete";
     completeButton.onclick = function() { ToggleHeroIsCompleted(index); };
-
-    row.appendChild(completeButtonCell);
+    completeButtonCell.appendChild(completeButton);
 
     // BlockButton cell
-    const blockButtonCell = document.createElement('td');
-
+    const blockButtonCell = document.createElement('div');
+    blockButtonCell.className = 'button-cell';
+    
     const blockButton = document.createElement('button');
-    blockButtonCell.appendChild(blockButton);
     blockButton.textContent = "Block";
     blockButton.onclick = function() { ToggleHeroIsBlocked(index); };
+    blockButtonCell.appendChild(blockButton);
 
-    row.appendChild(blockButtonCell);
+    // Assemble item
+    item.appendChild(heroInfoCell);
+    item.appendChild(roleCell);
+    item.appendChild(nameCell);
+    item.appendChild(selectButtonCell);
+    item.appendChild(completeButtonCell);
+    item.appendChild(blockButtonCell);
+
+    heroList.appendChild(item);
   });
 
-  // Append table to main content
-  main.appendChild(table);
+  // Append list to main content
+  main.appendChild(heroList);
 }
 
 
@@ -149,12 +149,20 @@ function RenderCurrentHero(){
 function ToggleHeroIsBlocked(index){
   heroes[index].isBlocked = !(heroes[index].isBlocked);
   console.log(heroes[index]);
+  const item = document.querySelector(`.hero-item:nth-child(${index + 1})`);
+  if (item) {
+    item.classList.toggle('blocked');
+  }
 }
 
 
 function ToggleHeroIsCompleted(index){
   heroes[index].isCompleted = !(heroes[index].isCompleted);
   console.log(heroes[index]);
+  const item = document.querySelector(`.hero-item:nth-child(${index + 1})`);
+  if (item) {
+    item.classList.toggle('completed');
+  }
 }
 
 
