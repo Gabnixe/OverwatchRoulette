@@ -14,23 +14,22 @@ html, body {
 
 /* Hero List Container */
 .hero-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
-  max-width: 800px;
+  display: grid;
+  gap: 20px;
+  padding: 10px;
   margin: 0 auto;
   background: #2d2d2d;
+  border-radius: 8px;
+  grid-template-columns: repeat(auto-fill);
 }
 
 /* Individual Hero Item */
 .hero-item {
-  display: grid;
-  grid-template-columns: 100px auto auto auto auto auto;
+  display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border: 1px solid #444;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid #444;
   border-radius: 8px;
   background: #2d2d2d;
   transition: all 0.3s ease;
@@ -38,18 +37,18 @@ html, body {
 
 .hero-item:hover {
   border-color: #6bb9ff;
-  box-shadow: 0 2px 8px rgba(107, 185, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(107, 185, 255, 0.3);
 }
 
 /* Hero Image Cell */
 .hero-info {
   display: flex;
-  align-items: center;
+  align-items: center; /* Ensure image stays vertically centered */
   justify-content: center;
 }
 
 .hero-item img {
-  border-radius: 4px;
+  border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -61,7 +60,7 @@ html, body {
 
 /* Name Cell */
 .name-cell {
-  font-weight: 600;
+  font-size: 64px;
   color: #e0e0e0;
   text-align: left;
 }
@@ -73,12 +72,13 @@ html, body {
 }
 
 .button-cell button {
-  padding: 8px 12px;
+  padding: 12px 24px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: 500;
+  font-size: 32px;
   transition: all 0.2s ease;
+  min-height: 44px;
 }
 
 /* Select Button */
@@ -139,18 +139,15 @@ html, body {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .hero-list {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 15px;
   }
   
   .hero-item {
-    grid-template-columns: 80px auto;
-    gap: 10px;
-  }
-  
-  .button-cell:not(:first-child) button {
-    display: none;
+    grid-template-columns: 90px 60px 1fr 75px 80px 80px;
   }
 }
 
