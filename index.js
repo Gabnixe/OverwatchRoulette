@@ -122,33 +122,44 @@ function CreateHeroList(){
 
 
 function RenderCurrentHero(){
-  const main = document.querySelector('main');
-  
-  // Create or get hero info section at top of main
-  let heroInfo = document.getElementById('current-hero-info');
+  const heroInfo = document.getElementById('current-hero-info');
   
   if (!heroInfo) {
-    heroInfo = document.createElement('div');
-    heroInfo.id = 'current-hero-info';
-    main.insertBefore(heroInfo, main.firstChild);
-    
-    // Create the info container
-    heroInfo.innerHTML = `<div id="hero-display"></div>`;
+    console.error('Hero info element not found!');
+    return;
   }
   
-  const displayDiv = document.getElementById('hero-display');
+  let displayDiv = heroInfo.querySelector('#hero-display') || 
+                     (heroInfo.innerHTML.includes('No hero selected') ? 
+                      heroInfo : null);
+  
+  if (!displayDiv) {
+    displayDiv = document.createElement('div');
+    displayDiv.id = 'hero-display';
+    heroInfo.appendChild(displayDiv);
+  }
   
   if (!currentHero) {
     displayDiv.innerHTML = '<p style="color: #666; text-align: center;">No hero selected yet</p>';
     return;
   }
   
-  // Hero Display
+  // Hero Display - Single row layout (image + name side by side)
   displayDiv.innerHTML = `
     <div style="display: flex; gap: 20px; align-items: center;">
       <img src="/assets/heroes_images/${currentHero.image}" 
            alt="${currentHero.name}" 
            style="width: 100px; height: auto;" />
+      
+      <!-- Role Icon -->
+      ${ROLES_ICONS[currentHero.role] ? `
+        <div style="display: flex; align-items: center;">
+          <img src="/assets/roles_icons/${ROLES_ICONS[currentHero.role]}" 
+               alt="${currentHero.role}" 
+               style="width: 24px; height: auto;" />
+        </div>` : ''}
+      
+      <!-- Hero Name -->
       <div>
         ${currentHero.name}
       </div>
