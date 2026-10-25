@@ -39,37 +39,47 @@ function CreateHeroList(){
     const item = document.createElement('div');
     item.className = `hero-item ${heroes[index].isBlocked ? 'blocked' : ''} ${heroes[index].isCompleted ? 'completed' : ''}`;
     
-    // Hero info cell
+    // Hero info cell (Row 1 - Image, Role Icon, Name)
     const heroInfoCell = document.createElement('div');
     heroInfoCell.className = 'hero-info';
     
+    // Hero image
     const heroImg = document.createElement('img');
-    heroInfoCell.appendChild(heroImg);
     heroImg.src = `/assets/heroes_images/${hero.image}`;
     heroImg.alt = hero.name;
     heroImg.style.maxWidth = '100px';
     heroImg.style.height = 'auto';
     heroInfoCell.appendChild(heroImg);
 
-    // Role cell
+    // Role cell (with role icon)
     const roleCell = document.createElement('div');
     roleCell.className = 'role-cell';
     
     const roleImg = document.createElement('img');
-    roleCell.appendChild(roleImg);
     roleImg.src = `/assets/roles_icons/` + ROLES_ICONS[hero.role];
     roleImg.alt = hero.role;
     roleImg.style.maxWidth = '24px';
     roleImg.style.height = 'auto';
-    
-    // Name cell
+    roleCell.appendChild(roleImg);
+
+    // Name cell (with hero name)
     const nameCell = document.createElement('div');
     nameCell.className = 'name-cell';
     nameCell.textContent = hero.name;
     
+    // Assemble Row 1 elements
+    heroInfoCell.appendChild(heroImg);
+    heroInfoCell.appendChild(roleCell);
+    heroInfoCell.appendChild(nameCell);
+
+    // Buttons container (Row 2)
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.gap = '10px';
+    
     // SelectButton cell
     const selectButtonCell = document.createElement('div');
-    selectButtonCell.className = 'button-cell';
+    selectButtonCell.className = 'button-cell select-btn';
     
     const selectButton = document.createElement('button');
     selectButton.textContent = "Select";
@@ -78,7 +88,7 @@ function CreateHeroList(){
 
     // CompleteButton cell
     const completeButtonCell = document.createElement('div');
-    completeButtonCell.className = 'button-cell';
+    completeButtonCell.className = 'button-cell complete-btn';
     
     const completeButton = document.createElement('button');
     completeButton.textContent = "Complete";
@@ -87,20 +97,21 @@ function CreateHeroList(){
 
     // BlockButton cell
     const blockButtonCell = document.createElement('div');
-    blockButtonCell.className = 'button-cell';
+    blockButtonCell.className = 'button-cell block-btn';
     
     const blockButton = document.createElement('button');
     blockButton.textContent = "Block";
     blockButton.onclick = function() { ToggleHeroIsBlocked(index); };
     blockButtonCell.appendChild(blockButton);
 
-    // Assemble item
+    // Add all buttons to container
+    buttonContainer.appendChild(selectButtonCell);
+    buttonContainer.appendChild(completeButtonCell);
+    buttonContainer.appendChild(blockButtonCell);
+
+    // Assemble item (Row 1 first, then Row 2)
     item.appendChild(heroInfoCell);
-    item.appendChild(roleCell);
-    item.appendChild(nameCell);
-    item.appendChild(selectButtonCell);
-    item.appendChild(completeButtonCell);
-    item.appendChild(blockButtonCell);
+    item.appendChild(buttonContainer);
 
     heroList.appendChild(item);
   });
