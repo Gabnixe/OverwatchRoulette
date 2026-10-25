@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Ana",
+        "role": "Support",
+        "image": "Ana_Hero.webp",
+        "isBlocked": false,
+        "isComplete": false,
+        "isSelected": false
+    },
+    {
+        "name": "Anran",
+        "role": "Damage",
+        "image": "Anran_Hero.webp",
+        "isBlocked": false,
+        "isComplete": false,
+        "isSelected": false
+    },
+    {
+        "name": "Ashe",
+        "role": "Damage",
+        "image": "Ashe_Hero.webp",
+        "isBlocked": false,
+        "isComplete": false,
+        "isSelected": false
+    },
+    {
+        "name": "Baptiste",
+        "role": "Support",
+        "image": "Baptiste_Hero.webp",
+        "isBlocked": false,
+        "isComplete": false,
+        "isSelected": false
+    },
+    {
+        "name": "D.mon",
+        "role": "Tank",
+        "image": "D.Mon_Hero.webp",
+        "isBlocked": false,
+        "isComplete": false,
+        "isSelected": false
+    }
+]

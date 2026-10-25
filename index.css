@@ -1,0 +1,13 @@
+@font-face {
+  font-family: Big_Noodle; /* set name */
+  src: url(assets/big_noodle_titling.ttf); /* url of the font */
+}
+
+*{
+    background-color: black;
+    color: white;
+    text-align: left;
+    align-items: center;
+    font-family: Big_Noodle;
+    font-size: 64px;
+}
