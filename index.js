@@ -35,7 +35,6 @@ function CreateHeroList(){
 
   // Loop through heroes and create table entries
   const tbody = table.querySelector('tbody');
-  let heroIndex = 0;
   heroes.forEach((hero, index) => {
     const row = document.createElement('tr');
 
@@ -81,12 +80,8 @@ function CreateHeroList(){
     selectButtonCell.appendChild(selectButton);
     selectButton.textContent = "Select";
     selectButton.onclick = function() { ToggleHeroIsSelected(index); };
-    console.log(heroIndex);
 
     row.appendChild(selectButton);
-
-    //Increase heroIndex
-    heroIndex++;
   });
 
   // Append table to main content
@@ -112,9 +107,46 @@ function ToggleHeroIsSelected(index){
 }
 
 function SaveJSON(){
+  const heroData = JSON.stringify(heroes, null, 2);
+  
+  // Create a temporary blob and download it
+  const blob = new Blob([heroData], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'OverwatchRoulette.json';
+  link.click();
+
   console.log("Json Saved");
 }
 
 function LoadJSON(){
+  if (!confirm('You will lose the current data. Continue?')) return;
+
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.json';
+  
+  fileInput.onchange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      try {
+        heroes = JSON.parse(event.target.result);
+        console.log('Heroes loaded successfully:', heroes.length);
+        CreateHeroList();
+      } catch (error) {
+        console.error('Error loading hero data:', error);
+        alert('Failed to parse hero data. Please check the file format.');
+      }
+    };
+    reader.readAsText(file);
+  };
+  
+  // Trigger file picker
+  fileInput.click();
+
   console.log("Json Loaded");
 }
