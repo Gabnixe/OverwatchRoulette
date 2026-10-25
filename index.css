@@ -1,18 +1,39 @@
+/** ============================================================
+  GLOBAL & BASE STYLES
+  ============================================================ */
+
+/* Font loading */
 @font-face {
-  font-family: Big_Noodle; /* set name */
-  src: url(assets/big_noodle_titling.ttf); /* url of the font */
+  font-family: 'Big_Noodle';
+  src: url('assets/big_noodle_titling.ttf');
+}
+
+/* HTML/Base Reset */
+* {
+  box-sizing: border-box;
 }
 
 html, body {
   background: #1a1a1a;
   color: #e0e0e0;
+  font-family: 'Big_Noodle', system-ui, -apple-system, sans-serif;
 }
 
-*{
-    font-family: Big_Noodle;
+/* ============================================================
+   LAYOUT CONTAINERS
+   ============================================================ */
+
+.hero-grid-container {
+  padding: 15px;
+  margin: 0 auto;
+  background: #2d2d2d;
+  border-radius: 8px;
 }
 
-/* Hero List Container */
+/* ============================================================
+   HERO LIST (Scrollable Grid)
+   ============================================================ */
+
 .hero-list {
   display: flex;
   flex-wrap: wrap;
@@ -21,10 +42,14 @@ html, body {
   margin: 0 auto;
   background: #2d2d2d;
   border-radius: 8px;
-  justify-content: center; /* Centers heroes horizontally */
+  justify-content: center;
+  width: 100%;
 }
 
-/* Individual Hero Item */
+/* ============================================================
+   INDIVIDUAL HERO ITEM
+   ============================================================ */
+
 .hero-item {
   display: grid;
   align-items: center;
@@ -33,7 +58,7 @@ html, body {
   border-radius: 8px;
   background: #2d2d2d;
   transition: all 0.3s ease;
-  gap: 8px; /* Spacing between rows */
+  gap: 8px; /* Row spacing */
 }
 
 .hero-item:hover {
@@ -41,22 +66,25 @@ html, body {
   box-shadow: 0 4px 12px rgba(107, 185, 255, 0.3);
 }
 
-/* Row 1: Hero Info (Image + Role Icon + Name) */
+/* ============================================================
+   ROW 1: HERO INFO (Image + Role Icon + Name)
+   ============================================================ */
+
 .hero-item .hero-info {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  min-width: 0; /* Allow text overflow handling */
+  min-width: 0; /* Prevent overflow issues */
 }
 
-/* Hero Image Cell - Row 1, Left Position */
+/* Hero Image */
 .hero-item .hero-info img {
   border-radius: 6px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Role Cell - Row 1 */
+/* Role Icon Cell */
 .hero-item .role-cell {
   display: flex;
   justify-content: center;
@@ -64,7 +92,7 @@ html, body {
   min-width: 36px;
 }
 
-/* Name Cell - Row 1 */
+/* Name Text Cell */
 .hero-item .name-cell {
   font-size: 24px;
   color: #e0e0e0;
@@ -75,7 +103,10 @@ html, body {
   max-width: 160px;
 }
 
-/* Row 2: Buttons (Select | Complete | Block) */
+/* ============================================================
+   ROW 2: ACTION BUTTONS
+   ============================================================ */
+
 .hero-item .button-cell {
   display: flex;
   justify-content: center;
@@ -93,13 +124,13 @@ html, body {
   min-height: 34px;
 }
 
-/* Select Button */
+/* Select Button (Blue) */
 .button-cell.select-btn button {
   background: #3498db;
   color: white;
 }
 
-.button-cell.select-btn button:hover {
+.button-cell.select-btn button:hover:not(:disabled) {
   background: #2980b9;
 }
 
@@ -108,13 +139,13 @@ html, body {
   cursor: not-allowed;
 }
 
-/* Complete Button */
+/* Complete Button (Green) */
 .button-cell.complete-btn button {
   background: #27ae60;
   color: white;
 }
 
-.button-cell.complete-btn button:hover {
+.button-cell.complete-btn button:hover:not(:disabled) {
   background: #219150;
 }
 
@@ -123,13 +154,13 @@ html, body {
   cursor: not-allowed;
 }
 
-/* Block Button */
+/* Block Button (Red) */
 .button-cell.block-btn button {
   background: #e74c3c;
   color: white;
 }
 
-.button-cell.block-btn button:hover {
+.button-cell.block-btn button:hover:not(:disabled) {
   background: #c0392b;
 }
 
@@ -138,69 +169,35 @@ html, body {
   cursor: not-allowed;
 }
 
-/* Hero Item - Completed State */
+/* ============================================================
+   STATE CLASSES
+   ============================================================ */
+
+/* Completed Hero */
 .hero-item.completed {
   background: #2e4a2e;
   border-color: #27ae60;
 }
 
-/* Hero Item - Blocked State */
+/* Blocked Hero */
 .hero-item.blocked {
   opacity: 0.5;
   background: #4a2e2e;
   border-color: #e74c3c;
 }
 
-/* Hero Info Row (First row, spans full width before buttons) */
-.hero-info {
-  grid-row: 1 / 2;
-}
+/* ============================================================
+   CURRENT HERO DISPLAY (Sticky Header)
+   ============================================================ */
 
-/* Buttons Row (Second row) */
-.button-cell {
-  grid-row: 2 / 3;
-  min-height: 40px;
-}
-
-/* Hero Display Section */
 #current-hero-info {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: #2d2d2d;
   padding: 20px;
   border-radius: 8px;
   margin-bottom: 20px;
-  border: 1px solid #444;
-}
-
-#hero-display {
-  min-height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Loading/Empty State */
-#hero-display p {
-  color: #aaa;
-  text-align: center;
-}
-
-/* === Main Container Styles === */
-.hero-grid-container {
-  padding: 15px;
-  margin: 0 auto;
-  background: #2d2d2d;
-  border-radius: 8px;
-}
-
-/* === Sticky Hero Section (Top) === */
-#current-hero-info {
-  position: sticky;
-  top: 0;
-  z-index: 100; /* Keep above hero list */
-  background: #2d2d2d;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 0;
   border: 1px solid #444;
   display: flex;
   align-items: center;
@@ -218,7 +215,10 @@ html, body {
   text-align: center;
 }
 
-/* === Footer Action Buttons (Bottom) === */
+/* ============================================================
+   FOOTER ACTION BUTTONS (FIXED)
+   ============================================================ */
+
 footer {
   background: #1a1a1a;
   padding: 15px;
@@ -238,32 +238,35 @@ footer button {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
-}
-
-/* Footer button styling matches main buttons */
-#action-buttons .select-btn,
-#action-buttons .complete-btn,
-#action-buttons .block-btn {
-  display: none !important; /* Remove inline styles from footer */
-}
-
-#action-buttons button {
+  
+  /* Default state */
   background: #6c757d;
   color: white;
-  border: 1px solid #495057;
 }
 
-#action-buttons button:hover {
+footer button:hover {
   background: #5a6268;
-  transform: translateY(-1px);
+  border-color: #495057;
 }
 
-/* === Responsive Adjustments === */
+/* ============================================================
+   EMPTY/LOADING STATE
+   ============================================================ */
+
+#hero-display p {
+  color: #aaa;
+  text-align: center;
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+
 @media (max-width: 1200px) {
   #current-hero-info {
     padding: 15px;
   }
-  
+
   footer {
     padding: 10px;
   }
@@ -274,19 +277,17 @@ footer button {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   #action-buttons {
     justify-content: center;
     flex-wrap: wrap;
   }
 }
 
-/* === Hero List Scrollable Area (if needed) === */
-.hero-list {
-  width: 100%;
-}
+/* ============================================================
+   UTILITY & SCROLL STYLES
+   ============================================================ */
 
-/* Ensure sticky hero stays visible when scrolling */
 @supports (position: sticky) {
   #current-hero-info {
     position: sticky;
