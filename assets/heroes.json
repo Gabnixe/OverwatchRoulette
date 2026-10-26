@@ -32,9 +32,401 @@
         "isSelected": false
     },
     {
+        "name": "Bastion",
+        "role": "Damage",
+        "image": "Bastion_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Brigitte",
+        "role": "Support",
+        "image": "Brigitte_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Cassidy",
+        "role": "Damage",
+        "image": "Cassidy_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
         "name": "D.mon",
         "role": "Tank",
         "image": "D.Mon_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "D.Va",
+        "role": "Tank",
+        "image": "D.Va_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Doctrine",
+        "role": "Support",
+        "image": "Doctrine_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Domina",
+        "role": "Tank",
+        "image": "Domina_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Doomfist",
+        "role": "Tank",
+        "image": "Doomfist_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Echo",
+        "role": "Support",
+        "image": "Echo_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Emre",
+        "role": "Damage",
+        "image": "Emre_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Freja",
+        "role": "Damage",
+        "image": "Freja_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Genji",
+        "role": "Damage",
+        "image": "Genji_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Hanzo",
+        "role": "Damage",
+        "image": "Hanzo_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Hazard",
+        "role": "Tank",
+        "image": "Hazard_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Ilari",
+        "role": "Support",
+        "image": "Ilari_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Jetpack Cat",
+        "role": "Support",
+        "image": "Jetpack_Cat_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Junker Queen",
+        "role": "Tank",
+        "image": "Junker_Queen_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Junkrat",
+        "role": "Damage",
+        "image": "Junkrat_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Juno",
+        "role": "Support",
+        "image": "Juno_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Kiriko",
+        "role": "Support",
+        "image": "Kiriko_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Lifeweaver",
+        "role": "Support",
+        "image": "Lifeweaver_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Lùcio",
+        "role": "Support",
+        "image": "Lucio_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Mauga",
+        "role": "Tank",
+        "image": "Mauga_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Mei",
+        "role": "Damage",
+        "image": "Mei_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Mercy",
+        "role": "Support",
+        "image": "Mercy_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Mizuki",
+        "role": "Support",
+        "image": "Mizuki_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Moira",
+        "role": "Support",
+        "image": "Moira_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Orisa",
+        "role": "Tank",
+        "image": "Orisa_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Pharah",
+        "role": "Damage",
+        "image": "Pharah_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Ramattra",
+        "role": "Tank",
+        "image": "Ramattra_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Reaper",
+        "role": "Damage",
+        "image": "Reaper_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Reinhardt",
+        "role": "Tank",
+        "image": "Reinhardt_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Roadhog",
+        "role": "Tank",
+        "image": "Roadhog_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Shion",
+        "role": "Damage",
+        "image": "Shion_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Sierra",
+        "role": "Damage",
+        "image": "Sierra_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Sigma",
+        "role": "Tank",
+        "image": "Sigma_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Sojourn",
+        "role": "Damage",
+        "image": "Sojourn_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Soldier 76",
+        "role": "Damage",
+        "image": "Soldier_76_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Sombra",
+        "role": "Support",
+        "image": "Sombra_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Symmetra",
+        "role": "Damage",
+        "image": "Symmetra_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Torbjörn",
+        "role": "Damage",
+        "image": "Torbjorn_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Tracer",
+        "role": "Damage",
+        "image": "Tracer_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Vendetta",
+        "role": "Damage",
+        "image": "Vendetta_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Venture",
+        "role": "Damage",
+        "image": "Venture_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Widowmaker",
+        "role": "Damage",
+        "image": "Widowmaker_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Winston",
+        "role": "Tank",
+        "image": "Winston_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Wrecking Ball",
+        "role": "Tank",
+        "image": "Wrecking_Ball_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Wuyang",
+        "role": "Support",
+        "image": "Wuyang_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Zarya",
+        "role": "Tank",
+        "image": "Zarya_Hero.webp",
+        "isBlocked": false,
+        "isCompleted": false,
+        "isSelected": false
+    },
+    {
+        "name": "Zenyatta",
+        "role": "Support",
+        "image": "Zenyatta_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
         "isSelected": false
