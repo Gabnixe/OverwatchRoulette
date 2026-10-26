@@ -109,7 +109,7 @@ function CreateHeroItem(hero, heroIndex) {
   const infoCell = document.createElement('div');
   infoCell.className = 'hero-info';
   infoCell.appendChild(CreateImage(hero));
-  infoCell.appendChild(CreateRoleIcon(hero));
+  //infoCell.appendChild(CreateRoleIcon(hero));
   infoCell.appendChild(createName(hero));
   
   const btnCell = CreateButtonContainer(hero, heroIndex);
@@ -124,7 +124,7 @@ function CreateImage(hero) {
   const img = document.createElement('img');
   img.src = `/assets/heroes_images/${hero.image}`;
   img.alt = hero.name;
-  img.style.maxWidth = '64px';
+  img.style.maxWidth = '32px';
   img.style.height = 'auto';
   return img;
 }
@@ -256,6 +256,7 @@ function SaveJSON() {
   link.href = url;
   link.download = 'OverwatchRoulette.json';
   link.click();
+  link.remove();
   
   setTimeout(() => URL.revokeObjectURL(url), 100);
   console.log('JSON saved');
