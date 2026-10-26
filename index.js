@@ -27,7 +27,7 @@ async function init() {
     console.log('Heroes loaded:', heroes.length);
     
     RenderHeroList();
-    RenderCurrentHero();
+    SelectRandomHero();
     
   } catch (error) {
     console.error('Error loading heroes:', error);
@@ -59,8 +59,9 @@ function RenderCurrentHero() {
     heroInfo.appendChild(displayDiv);
   }
   
+  // Show "no hero left" message if no hero is selected or all heroes are completed/blocked
   if (!currentHero) {
-    displayDiv.innerHTML = '<p style="color: #666; text-align: center;">No hero selected yet</p>';
+    displayDiv.innerHTML = '<p style="color: #e74c3c; text-align: center;">No hero is left to select</p>';
     return;
   }
   
@@ -166,6 +167,13 @@ function CreateButtonContainer(hero, heroIndex) {
     const button = document.createElement('button');
     button.textContent = text;
     
+    // Disable select button if hero is completed or blocked
+    const isDisabled = i === 0 && (hero.isCompleted || hero.isBlocked); // i=0 is Select
+    if (isDisabled) {
+      button.disabled = true;
+      button.style.opacity = '0.5';
+    }
+    
     button.onclick = () => onButtonClick(heroIndex, i); 
     
     cell.appendChild(button);
@@ -184,6 +192,7 @@ function onButtonClick(heroIndex, buttonIndex) {
   
   switch (action) {
     case 'select-btn':
+      if (heroes[heroIndex].isCompleted || heroes[heroIndex].isBlocked) {return;}
       ToggleSelected(heroIndex);
       break;
     case 'complete-btn':
@@ -221,8 +230,20 @@ function ToggleSelected(heroIndex) {
 // ========================================================================
 
 function SelectRandomHero() {
-  const randomIndex = Math.floor(Math.random() * heroes.length);
-  currentHero = heroes[randomIndex];
+  // Get list of available heroes (not completed, not blocked)
+  const availableHeroes = heroes.filter(hero => 
+    !hero.isCompleted && !hero.isBlocked
+  );
+  
+  if (availableHeroes.length === 0) {
+    currentHero = null;
+    RenderCurrentHero();
+    console.log('No heroes available to select');
+    return;
+  }
+  
+  const randomIndex = Math.floor(Math.random() * availableHeroes.length);
+  currentHero = availableHeroes[randomIndex];
   RenderCurrentHero();
 }
 
