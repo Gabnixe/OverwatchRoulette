@@ -67,13 +67,13 @@ function RenderCurrentHero() {
   
   displayDiv.innerHTML = `
     <div style="display: flex; gap: 20px; align-items: center;">
-      <img src="/assets/heroes_images/${currentHero.image}" 
+      <img src="./assets/heroes_images/${currentHero.image}" 
            alt="${currentHero.name}" 
            style="width: 100px; height: auto;" />
       
       ${ROLES_ICONS[currentHero.role] ? `
         <div style="display: flex; align-items: center;">
-          <img src="/assets/roles_icons/${ROLES_ICONS[currentHero.role]}" 
+          <img src="./assets/roles_icons/${ROLES_ICONS[currentHero.role]}" 
                alt="${currentHero.role}" 
                style="width: 24px; height: auto;" />
         </div>` : ''}
@@ -122,7 +122,7 @@ function CreateHeroItem(hero, heroIndex) {
 
 function CreateImage(hero) {
   const img = document.createElement('img');
-  img.src = `/assets/heroes_images/${hero.image}`;
+  img.src = `./assets/heroes_images/${hero.image}`;
   img.alt = hero.name;
   img.style.maxWidth = '32px';
   img.style.height = 'auto';
@@ -135,7 +135,7 @@ function CreateRoleIcon(hero) {
   
   const src = ROLES_ICONS[hero.role] || '';
   const img = document.createElement('img');
-  img.src = `/assets/roles_icons/${src}`;
+  img.src = `./assets/roles_icons/${src}`;
   img.alt = hero.role;
   img.style.maxWidth = '24px';
   img.style.height = 'auto';
