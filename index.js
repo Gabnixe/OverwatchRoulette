@@ -19,7 +19,7 @@ async function init() {
   const main = document.querySelector('main');
   
   try {
-    const response = await fetch('/assets/heroes.json');
+    const response = await fetch('assets/heroes.json');
     
     if (!response.ok) throw new Error(`Failed to load heroes: ${response.statusText}`);
     
