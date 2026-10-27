@@ -11,6 +11,8 @@ const ROLES_ICONS = {
 let heroes;
 let currentHero = null;
 
+const currentHeroChannel = new BroadcastChannel('current-hero');
+
 // ========================================================================
 // INITIALIZATION
 // ========================================================================
@@ -223,6 +225,8 @@ function ToggleSelected(heroIndex) {
   console.log('Current hero selected:', currentHero);
 
   RenderCurrentHero();
+  SendHeroSelectBroadcast();
+
 }
 
 // ========================================================================
@@ -245,6 +249,7 @@ function SelectRandomHero() {
   const randomIndex = Math.floor(Math.random() * availableHeroes.length);
   currentHero = availableHeroes[randomIndex];
   RenderCurrentHero();
+  SendHeroSelectBroadcast();
 }
 
 function SaveJSON() {
@@ -298,6 +303,13 @@ function LoadJSON() {
   };
   
   fileInput.click();
+}
+
+// ========================================================================
+// BROADCAST CHANNELS
+// ========================================================================
+function SendHeroSelectBroadcast() {
+  currentHeroChannel.postMessage(currentHero);
 }
 
 // ========================================================================
