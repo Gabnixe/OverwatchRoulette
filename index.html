@@ -10,15 +10,21 @@
     <!-- Sticky Selected Hero Section (Top) -->
     <header>
       <div id="current-hero">
-        <div class="center">
-          <img id="current-hero-icon" style="width: 100px; height: auto;" />
-        </div>
+        <div id="current-hero-info">
+          <div class="center">
+            <img id="current-hero-icon" style="width: 64px; height: auto;" />
+          </div>
 
-        <div class="center">
-          <img id="current-hero-role-icon" style="width: 24px; height: auto;" />
-        </div>
+          <div class="center">
+            <img id="current-hero-role-icon" style="width: 24px; height: auto;" />
+          </div>
 
-        <div id="current-hero-name"/></div>
+          <div id="current-hero-name"/></div>
+        </div>
+        <div id="current-hero-results">
+          <button id="current-hero-win" onclick="CurrentHeroWin()">Win</button>
+          <button id="current-hero-lost" onclick="CurrentHeroLost()">Lost</button>
+        </div>
       </div>
       <div id="banner">
         No more hero to select

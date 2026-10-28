@@ -71,6 +71,18 @@ function RenderCurrentHeroHeader() {
   currentHeroName.innerText = currentHero.name;
 }
 
+function CurrentHeroWin(){
+  const currentHeroIndex = GetCurrentHeroIndex();
+  ToggleCompleted(currentHeroIndex);
+  heroes[currentHeroIndex].win = heroes[currentHeroIndex].win + 1;
+  SelectRandomHero();
+}
+
+function CurrentHeroLost(){
+  const currentHeroIndex = GetCurrentHeroIndex();
+  heroes[currentHeroIndex].lost = heroes[currentHeroIndex].lost + 1;
+}
+
 // ========================================================================
 // HERO LIST
 // ========================================================================
@@ -194,25 +206,25 @@ function OnButtonClick(heroIndex, buttonIndex) {
 
 function ToggleBlocked(heroIndex) {
   heroes[heroIndex].isBlocked = !heroes[heroIndex].isBlocked;
-  console.log('Blocked state changed:', heroes[heroIndex]);
+  //console.log('Blocked state changed:', heroes[heroIndex]);
   
   UpdateVisualState(heroIndex);
 }
 
 function ToggleCompleted(heroIndex) {
   heroes[heroIndex].isCompleted = !heroes[heroIndex].isCompleted;
-  console.log('Completed state changed:', heroes[heroIndex]);
+  //console.log('Completed state changed:', heroes[heroIndex]);
   
   UpdateVisualState(heroIndex);
 }
 
 function ToggleSelected(heroIndex) {
   currentHero = heroes[heroIndex];
-  console.log('Current hero selected:', currentHero);
+  currentHeroIndex = heroIndex;
+  //console.log('Current hero selected:', currentHero);
 
   RenderCurrentHeroHeader();
   SendHeroSelectBroadcast();
-
 }
 
 // ========================================================================
@@ -220,13 +232,14 @@ function ToggleSelected(heroIndex) {
 // ========================================================================
 
 function SelectRandomHero() {
-  // Get list of available heroes (not completed, not HERO_ICON_PATHblocked)
+  // Get list of available heroes (not completed, not blocked)
   const availableHeroes = heroes.filter(hero => 
     !hero.isCompleted && !hero.isBlocked
   );
   
   if (availableHeroes.length === 0) {
     currentHero = null;
+    currentHeroIndex = -1;
     RenderCurrentHeroHeader();
     console.log('No heroes available to select');
     return;
@@ -274,7 +287,7 @@ function LoadJSON() {
         heroes = data;
         console.log('Heroes loaded:', heroes.length);
         RenderHeroList();
-        RenderCurrentHeroHeader();
+        SelectRandomHero();
       };
       
       reader.onerror = () => {
@@ -302,6 +315,10 @@ function SendHeroSelectBroadcast() {
 // ========================================================================
 // UTILITY
 // ========================================================================
+
+function GetCurrentHeroIndex(){
+  return heroes.findIndex((element) => element.name === currentHero.name);
+}
 
 function UpdateVisualState(heroIndex) {
   const item = document.querySelector(`.hero-item:nth-child(${heroIndex + 1})`);
