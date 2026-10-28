@@ -190,7 +190,7 @@ html, body {
    CURRENT HERO DISPLAY (Sticky Header)
    ============================================================ */
 
-#current-hero-info {
+header {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -206,18 +206,23 @@ html, body {
   font-size: 32px;
 }
 
-#current-hero-info .hero-display {
-  min-height: auto;
-  width: 100%;
+#current-hero {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
-#current-hero-info p {
-  color: #aaa;
-  text-align: center;
+#current-hero-icon {
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#banner {
+  text-align: center
 }
 
 /* ============================================================
-   FOOTER ACTION BUTTONS (FIXED)
+   FOOTER ACTION BUTTONS
    ============================================================ */
 
 footer {
@@ -251,22 +256,10 @@ footer button:hover {
 }
 
 /* ============================================================
-   EMPTY/LOADING STATE
+   UTILITY CLASSES & SCROLL STYLES
    ============================================================ */
 
-#hero-display p {
-  color: #aaa;
-  text-align: center;
-}
-
-
-/* ============================================================
-   UTILITY & SCROLL STYLES
-   ============================================================ */
-
-@supports (position: sticky) {
-  #current-hero-info {
-    position: sticky;
-    top: 0;
-  }
+.center {
+  display: flex;
+  align-items: center;
 }

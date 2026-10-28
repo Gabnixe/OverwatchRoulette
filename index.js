@@ -1,6 +1,9 @@
 /** ============================================================
-  OVERWATCH HERO ROULETTE - MAIN SCRIPT (CLEANED)
+  OVERWATCH HERO ROULETTE
   ============================================================ */
+
+const HERO_ICON_PATH = `assets/heroes_images/`;
+const ROLES_ICON_PATH = `assets/roles_icons/`;
 
 const ROLES_ICONS = {
   'Damage': 'Role_Damage_Circle.svg',
@@ -17,7 +20,7 @@ const currentHeroChannel = new BroadcastChannel('current-hero');
 // INITIALIZATION
 // ========================================================================
 
-async function init() {
+async function Init() {
   const main = document.querySelector('main');
   
   try {
@@ -38,51 +41,34 @@ async function init() {
 }
 
 // ========================================================================
-// CURRENT HERO
+// CURRENT HERO HEADER
 // ========================================================================
 
-function RenderCurrentHero() {
-  const heroInfo = document.getElementById('current-hero-info');
-  
-  if (!heroInfo) {
-    console.error('Hero info element not found!');
-    return;
-  }
-  
-  let displayDiv = heroInfo.querySelector('#hero-display');
-  
-  if (!displayDiv && heroInfo.innerHTML.includes('No hero selected')) {
-    displayDiv = heroInfo;
-  }
-  
-  if (!displayDiv) {
-    displayDiv = document.createElement('div');
-    displayDiv.id = 'hero-display';
-    heroInfo.appendChild(displayDiv);
-  }
-  
-  // Show "no hero left" message if no hero is selected or all heroes are completed/blocked
+function RenderCurrentHeroHeader() {
+  const banner = document.getElementById('banner');
+  const currentHeroDisplay = document.getElementById('current-hero');
+
+  //Toggle between current hero or the banner
   if (!currentHero) {
-    displayDiv.innerHTML = '<p style="color: #e74c3c; text-align: center;">No hero is left to select</p>';
+    banner.style.display = "flex";
+    currentHeroDisplay.style.display = "none";
     return;
+  }else{
+    currentHeroDisplay.style.display = "flex"
+    banner.style.display = "none";
   }
-  
-  displayDiv.innerHTML = `
-    <div style="display: flex; gap: 20px; align-items: center;">
-      <img src="assets/heroes_images/${currentHero.image}" 
-           alt="${currentHero.name}" 
-           style="width: 100px; height: auto;" />
-      
-      ${ROLES_ICONS[currentHero.role] ? `
-        <div style="display: flex; align-items: center;">
-          <img src="assets/roles_icons/${ROLES_ICONS[currentHero.role]}" 
-               alt="${currentHero.role}" 
-               style="width: 24px; height: auto;" />
-        </div>` : ''}
-      
-      <div>${currentHero.name}</div>
-    </div>
-  `;
+
+  const currentHeroIcon = document.getElementById('current-hero-icon');
+  const currentHeroRoleIcon = document.getElementById('current-hero-role-icon');
+  const currentHeroName = document.getElementById('current-hero-name');
+
+  currentHeroIcon.src = HERO_ICON_PATH + currentHero.image;
+  currentHeroIcon.alt = currentHero.name;
+
+  currentHeroRoleIcon.src = ROLES_ICON_PATH + ROLES_ICONS[currentHero.role];
+  currentHeroIcon.alt = currentHero.role;
+
+  currentHeroName.innerText = currentHero.name;
 }
 
 // ========================================================================
@@ -112,7 +98,7 @@ function CreateHeroItem(hero, heroIndex) {
   infoCell.className = 'hero-info';
   infoCell.appendChild(CreateImage(hero));
   //infoCell.appendChild(CreateRoleIcon(hero));
-  infoCell.appendChild(createName(hero));
+  infoCell.appendChild(CreateName(hero));
   
   const btnCell = CreateButtonContainer(hero, heroIndex);
   
@@ -124,7 +110,7 @@ function CreateHeroItem(hero, heroIndex) {
 
 function CreateImage(hero) {
   const img = document.createElement('img');
-  img.src = `assets/heroes_images/${hero.image}`;
+  img.src = HERO_ICON_PATH + hero.image;
   img.alt = hero.name;
   img.style.maxWidth = '32px';
   img.style.height = 'auto';
@@ -137,7 +123,7 @@ function CreateRoleIcon(hero) {
   
   const src = ROLES_ICONS[hero.role] || '';
   const img = document.createElement('img');
-  img.src = `assets/roles_icons/${src}`;
+  img.src = HERO_ICON_PATH + ROLES_ICONS[hero.role];
   img.alt = hero.role;
   img.style.maxWidth = '24px';
   img.style.height = 'auto';
@@ -146,7 +132,7 @@ function CreateRoleIcon(hero) {
   return cell;
 }
 
-function createName(hero) {
+function CreateName(hero) {
   const div = document.createElement('div');
   div.className = 'name-cell';
   div.textContent = hero.name;
@@ -176,7 +162,7 @@ function CreateButtonContainer(hero, heroIndex) {
       button.style.opacity = '0.5';
     }
     
-    button.onclick = () => onButtonClick(heroIndex, i); 
+    button.onclick = () => OnButtonClick(heroIndex, i); 
     
     cell.appendChild(button);
     container.appendChild(cell);
@@ -189,7 +175,7 @@ function CreateButtonContainer(hero, heroIndex) {
 // HERO BUTTON ACTIONS
 // ========================================================================
 
-function onButtonClick(heroIndex, buttonIndex) {
+function OnButtonClick(heroIndex, buttonIndex) {
   const action = ['select-btn', 'complete-btn', 'block-btn'][buttonIndex];
   
   switch (action) {
@@ -210,21 +196,21 @@ function ToggleBlocked(heroIndex) {
   heroes[heroIndex].isBlocked = !heroes[heroIndex].isBlocked;
   console.log('Blocked state changed:', heroes[heroIndex]);
   
-  updateVisualState(heroIndex);
+  UpdateVisualState(heroIndex);
 }
 
 function ToggleCompleted(heroIndex) {
   heroes[heroIndex].isCompleted = !heroes[heroIndex].isCompleted;
   console.log('Completed state changed:', heroes[heroIndex]);
   
-  updateVisualState(heroIndex);
+  UpdateVisualState(heroIndex);
 }
 
 function ToggleSelected(heroIndex) {
   currentHero = heroes[heroIndex];
   console.log('Current hero selected:', currentHero);
 
-  RenderCurrentHero();
+  RenderCurrentHeroHeader();
   SendHeroSelectBroadcast();
 
 }
@@ -234,21 +220,21 @@ function ToggleSelected(heroIndex) {
 // ========================================================================
 
 function SelectRandomHero() {
-  // Get list of available heroes (not completed, not blocked)
+  // Get list of available heroes (not completed, not HERO_ICON_PATHblocked)
   const availableHeroes = heroes.filter(hero => 
     !hero.isCompleted && !hero.isBlocked
   );
   
   if (availableHeroes.length === 0) {
     currentHero = null;
-    RenderCurrentHero();
+    RenderCurrentHeroHeader();
     console.log('No heroes available to select');
     return;
   }
   
   const randomIndex = Math.floor(Math.random() * availableHeroes.length);
   currentHero = availableHeroes[randomIndex];
-  RenderCurrentHero();
+  RenderCurrentHeroHeader();
   SendHeroSelectBroadcast();
 }
 
@@ -288,7 +274,7 @@ function LoadJSON() {
         heroes = data;
         console.log('Heroes loaded:', heroes.length);
         RenderHeroList();
-        RenderCurrentHero();
+        RenderCurrentHeroHeader();
       };
       
       reader.onerror = () => {
@@ -308,6 +294,7 @@ function LoadJSON() {
 // ========================================================================
 // BROADCAST CHANNELS
 // ========================================================================
+
 function SendHeroSelectBroadcast() {
   currentHeroChannel.postMessage(currentHero);
 }
@@ -316,7 +303,7 @@ function SendHeroSelectBroadcast() {
 // UTILITY
 // ========================================================================
 
-function updateVisualState(heroIndex) {
+function UpdateVisualState(heroIndex) {
   const item = document.querySelector(`.hero-item:nth-child(${heroIndex + 1})`);
   if (item) {
     item.classList.toggle('blocked', heroes[heroIndex].isBlocked);
@@ -328,4 +315,6 @@ function updateVisualState(heroIndex) {
 // ENTRY POINT
 // ========================================================================
 
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', Init);
+
+
