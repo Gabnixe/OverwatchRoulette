@@ -221,7 +221,7 @@ function ToggleCompleted(heroIndex) {
 function ToggleSelected(heroIndex) {
   currentHero = heroes[heroIndex];
   currentHeroIndex = heroIndex;
-  //console.log('Current hero selected:', currentHero);
+  //console.log('Current hero:', currentHero);
 
   RenderCurrentHeroHeader();
   SendHeroSelectBroadcast();

@@ -1,0 +1,14 @@
+#hero-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 8px;
+  border-radius: 6px;
+  justify-content: center;
+  background-color: #1A1A1A;
+}
+
+img {
+  border-radius: 6px;
+  background-color: #F4F4F4;
+}
