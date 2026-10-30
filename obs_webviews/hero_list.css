@@ -1,21 +1,26 @@
 #hero-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;
+  gap: 4px;
   padding: 8px;
   border-radius: 6px;
   justify-content: center;
   background-color: #1A1A1A;
 }
 
+.hero-item{
+  padding-bottom: 3px;
+  border-radius: 6px;
+  background-color: #539AE3;
+}
+
 .hero-image {
-  padding: 2px;
   border-radius: 6px;
   background-color: #F4F4F4;
 }
 
 .current {
-  background-color: #539AE3;
+  background-color: #FDBA21;
 }
 
 .blocked {

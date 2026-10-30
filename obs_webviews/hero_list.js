@@ -9,12 +9,9 @@ heroUpdateChannel.onmessage = (event) => {
     const heroIndex = GetHeroIndex(hero.name)
     const item = document.querySelector(`.hero-item:nth-child(${heroIndex + 1})`);
     if (item) {
-      const img = item.getElementsByClassName('hero-image')[0];
-      if (img) {
-        img.classList.toggle('current', hero.isCurrent);
-        img.classList.toggle('blocked', hero.isBlocked);
-        img.classList.toggle('completed', hero.isCompleted);
-      }
+      item.classList.toggle('current', hero.isCurrent);
+      item.classList.toggle('blocked', hero.isBlocked);
+      item.classList.toggle('completed', hero.isCompleted);
     }
 };
 
