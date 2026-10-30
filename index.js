@@ -100,6 +100,8 @@ function CurrentHeroLost(){
 
 function RenderHeroList() {
   const list = document.getElementById('hero-list');
+  //Delete all childrens
+  list.textContent = '';
   
   heroes.forEach((hero, index) => {
     list.appendChild(CreateHeroItem(hero, index));
