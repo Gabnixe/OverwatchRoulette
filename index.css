@@ -34,7 +34,7 @@ html, body {
    HERO LIST (Scrollable Grid)
    ============================================================ */
 
-.hero-list {
+#hero-list {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;

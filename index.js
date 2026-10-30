@@ -99,16 +99,11 @@ function CurrentHeroLost(){
 // ========================================================================
 
 function RenderHeroList() {
-  const list = document.createElement('div');
-  list.className = 'hero-list';
+  const list = document.getElementById('hero-list');
   
   heroes.forEach((hero, index) => {
     list.appendChild(CreateHeroItem(hero, index));
   });
-  
-  const main = document.querySelector('main');
-  main.innerHTML = '';
-  main.appendChild(list);
 }
 
 function CreateHeroItem(hero, heroIndex) {
