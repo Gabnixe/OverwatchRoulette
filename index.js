@@ -14,7 +14,18 @@ const ROLES_ICONS = {
 let heroes;
 let currentHero = null;
 
+// ========================================================================
+// BROADCAST CHANNELS
+// ========================================================================
 const currentHeroChannel = new BroadcastChannel('current-hero');
+function SendCurrentHeroBroadcast() {
+  currentHeroChannel.postMessage(currentHero);
+}
+
+const heroUpdateChannel = new BroadcastChannel('hero-update');
+function SendHeroUpdateBroadcast(hero) {
+  heroUpdateChannel.postMessage(hero);
+}
 
 // ========================================================================
 // INITIALIZATION
@@ -206,25 +217,31 @@ function OnButtonClick(heroIndex, buttonIndex) {
 
 function ToggleBlocked(heroIndex) {
   heroes[heroIndex].isBlocked = !heroes[heroIndex].isBlocked;
-  //console.log('Blocked state changed:', heroes[heroIndex]);
   
   UpdateVisualState(heroIndex);
+  SendHeroUpdateBroadcast(heroes[heroIndex]);
 }
 
 function ToggleCompleted(heroIndex) {
   heroes[heroIndex].isCompleted = !heroes[heroIndex].isCompleted;
-  //console.log('Completed state changed:', heroes[heroIndex]);
-  
+
   UpdateVisualState(heroIndex);
+  SendHeroUpdateBroadcast(heroes[heroIndex]);
 }
 
 function ToggleSelected(heroIndex) {
+  const lastCurrentHeroIndex = GetCurrentHeroIndex();
+  if (lastCurrentHeroIndex != -1) {
+    heroes[GetCurrentHeroIndex()].isCurrent = false;
+    SendHeroUpdateBroadcast(heroes[GetCurrentHeroIndex()]);
+  }
+
   currentHero = heroes[heroIndex];
-  currentHeroIndex = heroIndex;
-  //console.log('Current hero:', currentHero);
+  heroes[heroIndex].isCurrent = true; 
 
   RenderCurrentHeroHeader();
-  SendHeroSelectBroadcast();
+  SendCurrentHeroBroadcast();
+  SendHeroUpdateBroadcast(heroes[heroIndex]);
 }
 
 // ========================================================================
@@ -239,16 +256,14 @@ function SelectRandomHero() {
   
   if (availableHeroes.length === 0) {
     currentHero = null;
-    currentHeroIndex = -1;
     RenderCurrentHeroHeader();
     console.log('No heroes available to select');
     return;
   }
   
   const randomIndex = Math.floor(Math.random() * availableHeroes.length);
-  currentHero = availableHeroes[randomIndex];
-  RenderCurrentHeroHeader();
-  SendHeroSelectBroadcast();
+  hero = availableHeroes[randomIndex];
+  ToggleSelected(GetHeroIndex(hero.name));
 }
 
 function SaveJSON() {
@@ -305,19 +320,18 @@ function LoadJSON() {
 }
 
 // ========================================================================
-// BROADCAST CHANNELS
-// ========================================================================
-
-function SendHeroSelectBroadcast() {
-  currentHeroChannel.postMessage(currentHero);
-}
-
-// ========================================================================
 // UTILITY
 // ========================================================================
 
+function GetHeroIndex(name){
+  return heroes.findIndex((element) => element.name === name);
+}
+
 function GetCurrentHeroIndex(){
-  return heroes.findIndex((element) => element.name === currentHero.name);
+  if ( currentHero){
+    return GetHeroIndex(currentHero.name);
+  }
+  return -1;
 }
 
 function UpdateVisualState(heroIndex) {

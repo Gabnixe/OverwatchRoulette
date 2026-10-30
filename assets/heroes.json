@@ -5,7 +5,7 @@
         "image": "Ana_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -15,7 +15,7 @@
         "image": "Anran_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -25,7 +25,7 @@
         "image": "Ashe_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -35,7 +35,7 @@
         "image": "Baptiste_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -45,7 +45,7 @@
         "image": "Bastion_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -55,7 +55,7 @@
         "image": "Brigitte_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -65,7 +65,7 @@
         "image": "Cassidy_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -75,7 +75,7 @@
         "image": "D.Mon_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -85,7 +85,7 @@
         "image": "D.Va_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -95,7 +95,7 @@
         "image": "Doctrine_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -105,7 +105,7 @@
         "image": "Domina_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -115,7 +115,7 @@
         "image": "Doomfist_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -125,7 +125,7 @@
         "image": "Echo_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -135,7 +135,7 @@
         "image": "Emre_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -145,7 +145,7 @@
         "image": "Freja_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -155,7 +155,7 @@
         "image": "Genji_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -165,7 +165,7 @@
         "image": "Hanzo_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -175,7 +175,7 @@
         "image": "Hazard_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -185,7 +185,7 @@
         "image": "Illari_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -195,7 +195,7 @@
         "image": "Jetpack_Cat_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -205,7 +205,7 @@
         "image": "Junker_Queen_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -215,7 +215,7 @@
         "image": "Junkrat_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -225,7 +225,7 @@
         "image": "Juno_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -235,7 +235,7 @@
         "image": "Kiriko_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -245,7 +245,7 @@
         "image": "Lifeweaver_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -255,7 +255,7 @@
         "image": "Lucio_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -265,7 +265,7 @@
         "image": "Mauga_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -275,7 +275,7 @@
         "image": "Mei_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -285,7 +285,7 @@
         "image": "Mercy_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -295,7 +295,7 @@
         "image": "Mizuki_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -305,7 +305,7 @@
         "image": "Moira_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -315,7 +315,7 @@
         "image": "Orisa_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -325,7 +325,7 @@
         "image": "Pharah_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -335,7 +335,7 @@
         "image": "Ramattra_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -345,7 +345,7 @@
         "image": "Reaper_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -355,7 +355,7 @@
         "image": "Reinhardt_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -365,7 +365,7 @@
         "image": "Roadhog_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -375,7 +375,7 @@
         "image": "Shion_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -385,7 +385,7 @@
         "image": "Sierra_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -395,7 +395,7 @@
         "image": "Sigma_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -405,7 +405,7 @@
         "image": "Sojourn_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -415,7 +415,7 @@
         "image": "Soldier_76_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -425,7 +425,7 @@
         "image": "Sombra_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -435,7 +435,7 @@
         "image": "Symmetra_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -445,7 +445,7 @@
         "image": "Torbjorn_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -455,7 +455,7 @@
         "image": "Tracer_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -465,7 +465,7 @@
         "image": "Vendetta_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -475,7 +475,7 @@
         "image": "Venture_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -485,7 +485,7 @@
         "image": "Widowmaker_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -495,7 +495,7 @@
         "image": "Winston_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -505,7 +505,7 @@
         "image": "Wrecking_Ball_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -515,7 +515,7 @@
         "image": "Wuyang_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -525,7 +525,7 @@
         "image": "Zarya_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     },
@@ -535,7 +535,7 @@
         "image": "Zenyatta_Hero.webp",
         "isBlocked": false,
         "isCompleted": false,
-        "isSelected": false,
+        "isCurrent": false,
         "win": 0,
         "lost": 0
     }

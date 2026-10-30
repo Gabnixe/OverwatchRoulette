@@ -2,6 +2,22 @@ const HERO_ICON_PATH = `../assets/heroes_images/`;
 
 let heroes;
 
+const heroUpdateChannel = new BroadcastChannel('hero-update');
+heroUpdateChannel.onmessage = (event) => {
+    const hero = event.data;
+    console.log("Received:", hero);
+    const heroIndex = GetHeroIndex(hero.name)
+    const item = document.querySelector(`.hero-item:nth-child(${heroIndex + 1})`);
+    if (item) {
+      const img = item.getElementsByClassName('hero-image')[0];
+      if (img) {
+        img.classList.toggle('current', hero.isCurrent);
+        img.classList.toggle('blocked', hero.isBlocked);
+        img.classList.toggle('completed', hero.isCompleted);
+      }
+    }
+};
+
 // ========================================================================
 // INITIALIZATION
 // ========================================================================
@@ -25,6 +41,10 @@ async function Init() {
   }
 }
 
+// ========================================================================
+// HERO GRID
+// ========================================================================
+
 function RenderHeroGrid() {
   grid = document.getElementById('hero-grid');
   
@@ -47,11 +67,20 @@ function CreateHeroItem(hero, heroIndex) {
 
 function CreateImage(hero) {
   const img = document.createElement('img');
+  img.className = 'hero-image';
   img.src = HERO_ICON_PATH + hero.image;
   img.alt = hero.name;
   img.style.maxWidth = '32px';
   img.style.height = 'auto';
   return img;
+}
+
+// ========================================================================
+// UTILITY
+// ========================================================================
+
+function GetHeroIndex(name){
+  return heroes.findIndex((element) => element.name === name);
 }
 
 // ========================================================================
