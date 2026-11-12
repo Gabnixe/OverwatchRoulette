@@ -13,6 +13,13 @@ is an OverwatchRoulette setting: the "Hero request incentive ID" field on the
 dashboard, saved in localStorage as `owr:v1:hero-incentive` and shared by every
 page of the origin. With no ID saved, no hero requests are queued.
 
+A second field, "Un-complete incentive ID" (`owr:v1:uncomplete-incentive`),
+marks the incentive that lets a donor ask to clear a hero's completed state.
+Its redemptions are queued as `kind: 'uncomplete'` items, matched against
+completed heroes only, and wait in the pending list; accepting one clears
+`isCompleted` right away and drops it, so it never joins the queue. With no ID saved, none
+are queued. If both fields hold the same ID, it counts as a hero request.
+
 ## Code markers
 
 Every shortcut has a comment at the exact spot in the code:

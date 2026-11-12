@@ -27,6 +27,7 @@ import {
   playNext,
   canPlay,
   canAccept,
+  kindOf,
   accept,
 } from './store/queue.js';
 import {
@@ -38,6 +39,9 @@ import {
   heroIncentiveId,
   saveHeroIncentiveId,
   watchHeroIncentiveId,
+  uncompleteIncentiveId,
+  saveUncompleteIncentiveId,
+  watchUncompleteIncentiveId,
 } from './relay/client.js';
 import { formatAmount } from './utils/format.js';
 
@@ -449,7 +453,7 @@ function ConnectRelay(url) {
   relay?.close();
   relay = connectRelay(url);
   relay.onStatus(RenderRelayStatus);
-  relay.onEvent((event) => enqueue(itemFromEvent(event)));
+  relay.onEvent((event, kind) => enqueue(itemFromEvent(event, kind)));
   RenderRelayStatus(relay.status());
 }
 
@@ -457,6 +461,10 @@ function InitRelay() {
   $('hero-incentive').value = heroIncentiveId() ?? '';
   watchHeroIncentiveId((id) => {
     $('hero-incentive').value = id ?? '';
+  });
+  $('uncomplete-incentive').value = uncompleteIncentiveId() ?? '';
+  watchUncompleteIncentiveId((id) => {
+    $('uncomplete-incentive').value = id ?? '';
   });
   $('relay-url').value = relayUrl() ?? '';
   ConnectRelay(relayUrl());
@@ -479,16 +487,18 @@ function SaveRelayUrl(e) {
   ConnectRelay(relayUrl());
 }
 
-// The relay client reads the ID at each event, so no reconnect is needed.
+// The relay client reads the IDs at each event, so no reconnect is needed.
 function SaveHeroIncentive(e) {
   e.preventDefault();
   try {
     saveHeroIncentiveId($('hero-incentive').value);
+    saveUncompleteIncentiveId($('uncomplete-incentive').value);
   } catch {
-    alert('Could not save the hero request incentive ID.');
+    alert('Could not save the incentive IDs.');
     return;
   }
   $('hero-incentive').value = heroIncentiveId() ?? '';
+  $('uncomplete-incentive').value = uncompleteIncentiveId() ?? '';
 }
 
 function RenderRelayStatus(status) {
@@ -539,6 +549,12 @@ function CreateQueueItem(item) {
   const name = document.createElement('span');
   name.className = 'queue-name';
   name.textContent = hero ? hero.name : 'No match';
+  if (kindOf(item) === 'uncomplete') {
+    const badge = document.createElement('span');
+    badge.className = 'queue-test queue-uncomplete';
+    badge.textContent = 'Un-complete';
+    name.appendChild(badge);
+  }
   if (item.test) {
     const badge = document.createElement('span');
     badge.className = 'queue-test';
@@ -558,7 +574,12 @@ function CreateQueueItem(item) {
   actions.appendChild(CreateHeroPicker(item));
   if (isPending) {
     actions.append(
-      CreateActionButton('Accept', 'btn queue-play', () => accept(item.eventId), !canAccept(item)),
+      CreateActionButton(
+        kindOf(item) === 'uncomplete' ? 'Un-complete' : 'Accept',
+        'btn queue-play',
+        () => accept(item.eventId),
+        !canAccept(item),
+      ),
       CreateActionButton('Decline', 'btn btn-outline', () => removeFromQueue(item.eventId)),
     );
   } else {
@@ -581,7 +602,8 @@ function CreateHeroPicker(item) {
   const input = document.createElement('input');
   input.type = 'search';
   input.className = 'queue-pick';
-  input.setAttribute('list', HeroNameList().id);
+  const uncomplete = kindOf(item) === 'uncomplete';
+  input.setAttribute('list', HeroNameList(uncomplete).id);
   input.setAttribute('aria-label', `Hero for ${item.donor}`);
   input.autocomplete = 'off';
   input.spellcheck = false;
@@ -590,9 +612,17 @@ function CreateHeroPicker(item) {
   input.placeholder = current || 'Search hero…';
 
   const commit = () => {
-    const name = heroes().find((h) => h.name.toLowerCase() === input.value.trim().toLowerCase())?.name;
-    if (name && name !== item.hero) setQueueHero(item.eventId, name);
-    else input.value = current;
+    const name = heroes()
+      .filter((h) => !uncomplete || h.isCompleted)
+      .find((h) => h.name.toLowerCase() === input.value.trim().toLowerCase())?.name;
+    if (name && name !== item.hero) {
+      try {
+        setQueueHero(item.eventId, name);
+      } catch (error) {
+        console.warn('[queue:setHero]', error.message);
+        input.value = current;
+      }
+    } else input.value = current;
   };
   input.addEventListener('focus', () => { input.value = ''; });
   input.addEventListener('change', commit);
@@ -608,15 +638,17 @@ function CreateHeroPicker(item) {
   return input;
 }
 
-// One shared <datalist> of roster names for every hero picker.
-function HeroNameList() {
-  let list = $('hero-names');
+// Shared <datalist>s of roster names for the hero pickers: every hero, or only
+// the completed ones for un-complete requests.
+function HeroNameList(completedOnly = false) {
+  const id = completedOnly ? 'hero-names-completed' : 'hero-names';
+  let list = $(id);
   if (!list) {
     list = document.createElement('datalist');
-    list.id = 'hero-names';
+    list.id = id;
     document.body.appendChild(list);
   }
-  const names = heroes().map((h) => h.name);
+  const names = heroes().filter((h) => !completedOnly || h.isCompleted).map((h) => h.name);
   if (list.options.length !== names.length || [...list.options].some((o, i) => o.value !== names[i])) {
     list.textContent = '';
     names.forEach((n) => list.appendChild(new Option(n, n)));
